@@ -19,5 +19,23 @@ boxes.forEach((box) => {
 
     const isDragged = document.querySelector(".is-dragged");
     box.appendChild(isDragged);
+
+    leftPresents();
   });
 });
+
+const leftPresents = () => {
+  const chosenPresents = presentBox.querySelectorAll(".present");
+  if (chosenBox.childElementCount > 2) {
+    chosenPresents.forEach((present) => {
+      present.setAttribute("draggable", "false");
+      present.classList.add("present-disabled");
+    });
+  } else {
+    chosenPresents.forEach((present) => {
+      present.setAttribute("draggable", "true");
+      present.classList.remove("present-disabled");
+    });
+    sendBtn.disabled = false;
+  }
+};
