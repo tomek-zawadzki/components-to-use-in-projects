@@ -6,6 +6,7 @@
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -77,4 +78,67 @@ body {
 a {
   text-decoration: none;
   color: #000;
+}
+
+/* TIMELINE */
+
+.timeline {
+  margin-top: 10em;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  color: #fff;
+}
+
+.timeline ul {
+  display: flex;
+  flex-direction: column;
+  margin: 0 2em;
+  list-style: none;
+}
+
+.timeline li {
+  position: relative;
+  margin-bottom: 2em;
+  padding: 2em;
+  width: 50%;
+  border: 1px solid #0076e8;
+  border-radius: 8px;
+}
+
+.timeline li::after {
+  position: absolute;
+  top: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
+  background-color: #0076e8;
+  border-radius: 50%;
+  content: "";
+}
+
+.timeline li:nth-child(even) {
+  align-self: flex-end;
+  transform: translateX(20px);
+}
+.timeline li:nth-child(even)::after {
+  left: -31px;
+}
+
+.timeline li:nth-child(odd) {
+  transform: translateX(-20px);
+}
+.timeline li:nth-child(odd)::after {
+  right: -31px;
+}
+
+.timeline::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  width: 2px;
+  height: 100%;
+  background-color: #0076e8;
+  content: "";
 }
