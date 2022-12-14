@@ -75,3 +75,50 @@ accordionBtns.forEach((btn) =>
 );
 
 window.addEventListener("click", clickOutsideAccordion);
+
+// SLIDER
+
+const sliderBox = document.querySelector(".slider-box");
+const leftSliderBtn = document.querySelector(".btn-left");
+const rightSliderBtn = document.querySelector(".btn-right");
+const carouselImages = document.querySelectorAll(".slider-img");
+const carouselWidth = 800;
+const carouselSpeed = 3000;
+
+let index = 0;
+
+const handleCarousel = () => {
+  index++;
+  changeImage();
+};
+
+let startCarousel = setInterval(handleCarousel, carouselSpeed);
+
+const changeImage = () => {
+  if (index > carouselImages.length - 1) {
+    index = 0;
+  } else if (index < 0) {
+    index = carouselImages.length - 1;
+  }
+
+  sliderBox.style.transform = `translateX(${-index * carouselWidth}px)`;
+};
+
+const handleRightArrow = () => {
+  index++;
+  changeImage();
+};
+
+const handleLeftArrow = () => {
+  index--;
+  changeImage();
+};
+
+rightSliderBtn.addEventListener("click", handleRightArrow);
+leftSliderBtn.addEventListener("click", handleLeftArrow);
+
+const resetInterval = () => {
+  changeImage();
+  clearInterval(startCarousel);
+  startCarousel = setInterval(handleCarousel, carouselSpeed);
+};
