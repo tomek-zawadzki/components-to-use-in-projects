@@ -122,3 +122,23 @@ const resetInterval = () => {
   clearInterval(startCarousel);
   startCarousel = setInterval(handleCarousel, carouselSpeed);
 };
+
+// UNWIND SLIDES
+const bcg = document.querySelector(".unwind-slides");
+const cards = document.querySelectorAll(".card");
+
+function showCard() {
+  cards.forEach((card) => {
+    card.classList.remove("active");
+    this.classList.add("active");
+  });
+
+  handleBgColor(this);
+}
+
+const handleBgColor = (card) => {
+  const season = card.getAttribute("data-season");
+  bcg.setAttribute("data-bg", season);
+};
+
+cards.forEach((card) => card.addEventListener("click", showCard));

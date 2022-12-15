@@ -261,3 +261,161 @@ a {
 .btn:hover span {
   transform: scale(0.7);
 }
+
+/* UNWIND STYLES */
+
+:root {
+  --spring-color: #5bca5b;
+  --summer-color: #ffd900;
+  --autumn-color: #309213;
+  --winter-color: #4198df;
+}
+
+[data-bg="spring"] {
+  background-color: var(--spring-color);
+}
+
+[data-bg="summer"] {
+  background-color: var(--summer-color);
+}
+
+[data-bg="autumn"] {
+  background-color: var(--autumn-color);
+}
+
+[data-bg="winter"] {
+  background-color: var(--winter-color);
+}
+
+.wrapper {
+  display: flex;
+  padding: 0.5em;
+  width: 1200px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.unwind-slides {
+  height: 800px;
+}
+
+.card {
+  position: relative;
+  flex-grow: 0.8;
+  height: 600px;
+  margin: 4px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  transition: flex-grow 0.8s;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: opacity 0.5s;
+}
+
+.spring {
+  background-image: url("https://cdn.pixabay.com/photo/2018/05/04/07/55/snow-3373432_960_720.jpg");
+}
+
+.summer {
+  background-image: url("https://cdn.pixabay.com/photo/2013/10/07/18/06/field-192179_960_720.jpg");
+}
+
+.autumn {
+  background-image: url("https://cdn.pixabay.com/photo/2019/03/31/21/43/the-dark-hedges-4094148_960_720.jpg");
+}
+
+.winter {
+  background-image: url("https://cdn.pixabay.com/photo/2018/05/04/07/55/snow-3373432_960_720.jpg");
+}
+
+.spring::before,
+.summer::before,
+.autumn::before,
+.winter::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  content: "";
+}
+
+.spring::before {
+  background-color: var(--spring-color);
+}
+.summer::before {
+  background-color: var(--summer-color);
+}
+.autumn::before {
+  background-color: var(--autumn-color);
+}
+.winter::before {
+  background-color: var(--winter-color);
+}
+
+.text {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+  width: 80%;
+  padding: 2em;
+  color: #fff;
+  border-radius: 6px;
+  z-index: 5;
+}
+
+.text h3 {
+  text-transform: uppercase;
+  transform: rotate(-90deg);
+}
+
+.text p {
+  display: none;
+  opacity: 0;
+  font-size: 1.6rem;
+}
+
+.active {
+  flex-grow: 8;
+}
+
+.active .text {
+  animation: show-bg 1s 0.6s forwards;
+}
+
+.active .text h3 {
+  display: none;
+}
+
+.active .text p {
+  display: block;
+  animation: show-text 2s 0.5s forwards;
+}
+
+.card.active::after {
+  opacity: 0;
+}
+
+@keyframes show-bg {
+  to {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+@keyframes show-text {
+  to {
+    opacity: 1;
+  }
+}
