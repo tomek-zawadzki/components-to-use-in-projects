@@ -142,3 +142,54 @@ const handleBgColor = (card) => {
 };
 
 cards.forEach((card) => card.addEventListener("click", showCard));
+
+// TYPE TEXT
+
+const modal = document.querySelector(".modal");
+const input = document.querySelector(".modal-input");
+const modalBtn = document.querySelector(".modal-btn-tt");
+const saveBtn = document.querySelector(".save-btn-tt");
+const text = document.querySelector(".text-tt");
+const errorMsg = document.querySelector(".error-msg");
+
+let inputValue = "To jest testowa wiadomość";
+let timeout;
+let indexTT = 1;
+let speed = 80;
+
+const writingAnimation = () => {
+  text.innerHTML = inputValue.slice(0, indexTT);
+
+  indexTT++;
+
+  if (indexTT > inputValue.length) return;
+
+  timeout = setTimeout(writingAnimation, speed);
+};
+
+const showModal = () => {
+  modal.classList.add("active");
+};
+
+const closeModal = () => {
+  if (input.value == "") {
+    errorMsg.textContent = "Wprowadź tekst";
+    return;
+  }
+  inputValue = input.value;
+  modal.classList.remove("active");
+  clearStuff();
+  writingAnimation();
+};
+
+const clearStuff = () => {
+  indexTT = 1;
+  clearTimeout(timeout);
+  input.value = "";
+  errorMsg.textContent = "";
+};
+
+modalBtn.addEventListener("click", showModal);
+saveBtn.addEventListener("click", closeModal);
+
+// writingAnimation();
