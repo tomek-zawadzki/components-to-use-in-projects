@@ -193,3 +193,30 @@ modalBtn.addEventListener("click", showModal);
 saveBtn.addEventListener("click", closeModal);
 
 // writingAnimation();
+
+// ZOOMING PHOTOS
+const photo = document.querySelector(".zooming-exercise-img");
+
+const zoomImg = (e) => {
+  const x = e.clientX;
+  const y = e.clientY;
+  // wskazują pozycję kursora w przeglądarce
+
+  const imgX = photo.offsetLeft;
+  const imgY = photo.offsetTop;
+  // pozycja obrazka
+
+  const newX = (imgX - x) * -1;
+  const newY = (imgY - y) * -1;
+  // pozycja kursora wewnątrz obrazka
+
+  photo.style.transformOrigin = `${newX}px ${newY}px`;
+  photo.classList.add("zoom-img");
+};
+
+const resetImg = () => {
+  photo.classList.remove("zoom-img");
+};
+
+photo.addEventListener("mousemove", zoomImg);
+photo.addEventListener("mouseout", resetImg);

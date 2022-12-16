@@ -480,3 +480,14 @@ a {
 .active {
   display: flex;
 }
+
+/* ZOOMING PHOTOS */
+
+.image-box {
+	overflow: hidden;
+}
+
+.zoom-img {
+	cursor: zoom-in;
+	transform: scale(2);
+}
