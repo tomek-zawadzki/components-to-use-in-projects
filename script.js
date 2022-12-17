@@ -253,3 +253,26 @@ const startCounter = (entry) => {
 
 const observer = new IntersectionObserver(startCounter, options);
 observer.observe(counterBox);
+
+// NAVIGATION
+const menuItem = document.querySelectorAll("a");
+const scrollSpySections = document.querySelectorAll(".exercise");
+
+const handleScrollSpy = () => {
+  // if (document.body.classList.contains(".main-page")) {}
+  const exercisesSection = [];
+
+  scrollSpySections.forEach((sec) => {
+    if (window.scrollY <= sec.offsetTop + sec.offsetHeight) {
+      exercisesSection.push(sec);
+
+      const activeSection = document.querySelector(
+        `[href*="${exercisesSection[0].id}"]`
+      );
+      menuItem.forEach((item) => item.classList.remove("active-nav"));
+      activeSection.classList.add("active-nav");
+    }
+  });
+};
+
+window.addEventListener("scroll", handleScrollSpy);

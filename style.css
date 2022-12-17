@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -22,6 +26,10 @@ body {
   width: 100vw;
   margin-bottom: 8em;
   border-top: 3px solid #eee;
+}
+
+.drop-title {
+  margin-top: 100px;
 }
 
 .exercise-title {
@@ -524,4 +532,28 @@ a {
 
 .ti {
   font-size: 4rem;
+}
+
+/* NAVIGATION */
+
+nav {
+  position: fixed;
+  top: 0;
+  padding: 2em;
+  width: 100%;
+  text-align: center;
+  background-color: #000;
+  z-index: 99;
+}
+
+nav a {
+  margin: 0 2em;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #fff;
+  height: 0.4rem;
+}
+
+.active-nav {
+  color: gold;
 }
