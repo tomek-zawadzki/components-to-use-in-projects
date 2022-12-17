@@ -220,3 +220,36 @@ const resetImg = () => {
 
 photo.addEventListener("mousemove", zoomImg);
 photo.addEventListener("mouseout", resetImg);
+
+// COUNTER
+const counterItem = document.querySelectorAll(".counter");
+const counterBox = document.querySelector(".counter-box");
+
+const options = {
+  rootMargin: "-250px",
+};
+
+const startCounter = (entry) => {
+  if (entry[0].isIntersecting) {
+    counterItem.forEach((counter) => {
+      const updadateCounter = () => {
+        const finalNumber = counter.getAttribute("data-number");
+        const value = parseInt(counter.textContent);
+
+        const speed = finalNumber / 300;
+
+        if (value < finalNumber) {
+          counter.textContent = `${Math.floor(value + speed)}`;
+          setTimeout(updadateCounter, 1);
+        } else {
+          counter.textContent = finalNumber;
+        }
+      };
+
+      updadateCounter();
+    });
+  }
+};
+
+const observer = new IntersectionObserver(startCounter, options);
+observer.observe(counterBox);

@@ -484,10 +484,44 @@ a {
 /* ZOOMING PHOTOS */
 
 .image-box {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 .zoom-img {
-	cursor: zoom-in;
-	transform: scale(2);
+  cursor: zoom-in;
+  transform: scale(2);
+}
+
+/* COUNTER */
+
+.text-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #111;
+  color: #fff;
+  font-size: 6rem;
+}
+
+.counter-box {
+  display: flex;
+  margin: 6em 0;
+}
+
+.counter-item {
+  margin: 1em;
+  width: 200px;
+  color: #fff;
+  text-align: center;
+}
+
+.counter {
+  margin: 0.3em 0;
+  font-size: 4rem;
+}
+
+.ti {
+  font-size: 4rem;
 }
