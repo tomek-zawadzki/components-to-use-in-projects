@@ -4,6 +4,14 @@
   padding: 0;
 }
 
+:root {
+  --spring-color: #5bca5b;
+  --summer-color: #ffd900;
+  --autumn-color: #309213;
+  --winter-color: #4198df;
+  --scroll-width: 0;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -271,13 +279,6 @@ a {
 }
 
 /* UNWIND STYLES */
-
-:root {
-  --spring-color: #5bca5b;
-  --summer-color: #ffd900;
-  --autumn-color: #309213;
-  --winter-color: #4198df;
-}
 
 [data-bg="spring"] {
   background-color: var(--spring-color);
@@ -556,4 +557,43 @@ nav a {
 
 .active-nav {
   color: gold;
+}
+
+/* SCROLLBAR */
+
+.header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 100%;
+  z-index: 888;
+}
+
+.scroll-bar {
+  position: absolute;
+  top: 0;
+  height: 20px;
+  width: var(--scroll-width);
+  background-color: tomato;
+  z-index: 999;
+}
+
+.scroll-to-top {
+  display: none;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  padding: 1em 2em;
+  text-transform: uppercase;
+  background-color: #bbb;
+  border: none;
+  cursor: pointer;
+  z-index: 11;
+}
+
+.active-scroll-btn {
+  display: block;
 }

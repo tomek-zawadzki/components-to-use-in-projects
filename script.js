@@ -276,3 +276,35 @@ const handleScrollSpy = () => {
 };
 
 window.addEventListener("scroll", handleScrollSpy);
+
+// SCROLLBAR
+
+const scrollToTopBtn = document.querySelector(".scroll-to-top");
+let root = document.documentElement;
+
+const handleScrollBar = () => {
+  const scroll = window.scrollY;
+  const leftToScroll =
+    document.body.getBoundingClientRect().height - window.innerHeight;
+
+  const scrollBarWidth = Math.floor((scroll / leftToScroll) * 100);
+  console.log(scrollBarWidth);
+
+  root.style.setProperty("--scroll-width", `${scrollBarWidth}%`);
+
+  if (scrollBarWidth > 20) {
+    scrollToTopBtn.classList.add("active-scroll-btn");
+  } else {
+    scrollToTopBtn.classList.remove("active-scroll-btn");
+  }
+};
+
+const scrollToTop = () => {
+  window.scroll({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
+window.addEventListener("scroll", handleScrollBar);
+scrollToTopBtn.addEventListener("click", scrollToTop);
